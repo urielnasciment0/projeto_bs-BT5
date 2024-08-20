@@ -15,7 +15,7 @@
             <!--Conteúdo sidebar-->
             <div class="h-100">
                 <div class="sidebar-logo">
-                    <a href="#">BabyStar</a>
+                    <a href="dashboard.html">BabyStar</a>
                 </div>
                 <ul class="sidebar-nav">
                     <li class="sidebar-header">
@@ -46,7 +46,7 @@
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="registro_bebes.html" class="sidebar-link">Últimos bebês</a>
+                                <a href="#" class="sidebar-link">Últimos bebês</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link">Últimos médicos</a>
@@ -79,56 +79,67 @@
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h4>Cadastrar novo bebê</h4>
+                        <h4>Buscar resgistro - Bebê</h4>
                     </div>
-                    <div class="row d-flex justify-content-center align-items-center">
-                        <div class="col col-xl-8">
-                            <form id="form" class="row g-2">
-                                <div class="col-md-5">
-                                <label for="inputEmail4" class="form-label">Nome</label>
-                                <input type="email" class="form-control" id="inputEmail4">
-                                </div>
-                                <div class="col-md-5">
-                                <label for="inputPassword4" class="form-label">Sobrenome</label>
-                                <input type="password" class="form-control" id="inputPassword4">
-                                </div>
-                                <div class="col-md-10">
-                                <label for="inputAddress" class="form-label">Nome da mãe</label>
-                                <input type="text" class="form-control" id="inputAddress">
-                                </div>
-                                <div class="col-md-10">
-                                <label for="inputAddress2" class="form-label">Nome do pai</label>
-                                <input type="text" class="form-control" id="inputAddress2">
-                                </div>
-                                <div class="col-md-10">
-                                    <label for="inputCity" class="form-label">Endereço</label>
-                                    <input type="text" class="form-control" id="inputCity">
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="inputEmail4" class="form-label">Estado</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
-                                </div>
-                                <div class="col-md-5">
-                                    <label for="inputEmail4" class="form-label">Cidade</label>
-                                    <input type="email" class="form-control" id="inputEmail4">
-                                </div>
-                                <div class="col-md-5">
-                                <label for="inputCity" class="form-label">Nascimento</label>
-                                <input type="date" class="form-control" id="inputCity">
-                                </div>
-                                <div class="col-md-10">
-                                    <label for="inputState" class="form-label">Médico responsável</label>
-                                    <select id="inputState" class="form-select">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="col-10 g-5 text-end">
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                                </div>
-                            </form>
+                    <div class="row g-2 mb-4">
+                        <form class="row gx-3 gy-2 align-items-center">
+                            <div class="col-sm-4">
+                              <label class="visually-hidden" for="specificSizeInputName">Name</label>
+                              <input type="text" class="form-control" id="specificSizeInputName">
+                            </div>
+                            <div class="col-sm-2">
+                              <label class="visually-hidden" for="specificSizeSelect">Preference</label>
+                              <select class="form-select" id="specificSizeSelect">
+                                <option selected>Buscar por</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>
+                            <div class="col-auto">
+                              <button type="submit" class="btn btn-primary">Pesquisar</button>
+                            </div>
+                          </form>                       
+                    </div>
+                    <!-- Elementos tabela -->
+                     <div class="card border-0">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                Últimos bebês registrados
+                            </h5>                           
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Pai</th>
+                                    <th scope="col">Mãe</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Joana</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>Felipe</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>João</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                     </div>
                 </div>
             </main>
             <a href="#" class="theme-toggle">
