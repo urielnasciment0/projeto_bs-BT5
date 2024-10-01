@@ -30,6 +30,18 @@ h4 {
     color: var(--bs-emphasis-color); 
 }
 
+.table-overflow {
+    overflow-x: scroll;
+}
+
+td {
+    min-width:100px; /* width/largura das células à escolha */
+}
+
+th, td {
+    vertical-align: baseline;
+}
+
 /* Layout do esqueleto admin dashboard */
 
 .wrapper {
@@ -82,12 +94,17 @@ h4 {
     padding: 1.5rem 1.5rem .375rem;
 }
 
+
 a.sidebar-link {
-    padding: .625rem 1.625rem;
+    padding: 0.625rem 1.625rem;
     color: #e9ecef;
     position: relative;
     display: block;
     font-size: 0.875rem;
+}
+
+.icon-navbar {
+    padding-right: .3rem;
 }
 
 .sidebar-link[data-bs-toggle="collapse"]::after {
