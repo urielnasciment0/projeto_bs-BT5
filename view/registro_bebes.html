@@ -82,24 +82,17 @@
                         <h4>Buscar resgistro - Bebê</h4>
                     </div>
                     <div class="row g-2 mb-4">
-                        <form class="row gx-3 gy-2 align-items-center">
+                        
                             <div class="col-sm-4">
-                              <label class="visually-hidden" for="specificSizeInputName">Name</label>
-                              <input type="text" class="form-control" id="specificSizeInputName">
+                              <input type="text" id="searchInput" class="form-control" onkeyup="filterTable()">
                             </div>
                             <div class="col-sm-2">
                               <label class="visually-hidden" for="specificSizeSelect">Preference</label>
-                              <select class="form-select" id="specificSizeSelect">
-                                <option selected>Buscar por</option>
-                                <option value="1">Nome</option>
-                                <option value="2">Nascimento</option>
-                                <option value="3">Médiso resp.</option>
-                              </select>
-                            </div>
-                            <div class="col-auto">
-                              <button type="submit" class="btn btn-primary">Pesquisar</button>
-                            </div>
-                          </form>                       
+                              <select class="form-select" id="filterSelect">
+                                <option value="name">Nome</option>
+                                <option value="birth">Nascimento</option>
+                                <option value="med">Médiso resp.</option>
+                              </select>                                                
                     </div>
                     <!-- Elementos tabela -->
                      <div class="card border-0">
@@ -109,78 +102,138 @@
                             </h5>                           
                         </div>
                         <div class="card-body table-overflow">
-                            <table class="table">
+                            <table class="table" id="myTable">
                                 <thead>
-                                  <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Nascimento</th>
-                                    <th scope="col">Médico resp.</th>
-                                    <th scope="col">Editar</th>
-                                    <th scope="col">Apagar</th>
-                                  </tr>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Nascimento</th>
+                                        <th scope="col">Médico resp.</th>
+                                        <th scope="col">Editar</th>
+                                        <th scope="col">Apagar</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>Fabrício da Silva Neto</td>
-                                    <td>25/09/2024</td>
-                                    <td>Denis Ferreira Prado</td>
-                                    <td>
-                                        <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger erase"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">2</th>
-                                    <td>Ruan Nobrega Paiva</td>
-                                    <td>12/08/2024</td>
-                                    <td>Felipe Matineli Alves</td>
-                                    <td>
-                                        <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger erase"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">3</th>
-                                    <td>Dionaldo Araujo Coelho</td>
-                                    <td>06/08/2024</td>
-                                    <td>Felipe Matineli Alves</td>
-                                    <td>
-                                        <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger erase"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">4</th>
-                                    <td>Josué Pereira Filho</td>
-                                    <td>25/07/2024</td>
-                                    <td>Felipe Matineli Alves</td>
-                                    <td>
-                                        <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger erase"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <th scope="row">5</th>
-                                    <td>Carlos Fontinele de Melo</td>
-                                    <td>06/07/2024</td>
-                                    <td>Denis Ferreira Prado</td>
-                                    <td>
-                                        <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger erase"><i class="fa-solid fa-trash-can"></i></button>
-                                    </td>
-                                  </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Fabrício da Silva Neto</td>
+                                        <td>25/09/2024</td>
+                                        <td>Janice Hosenberg Lino</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Ruan Nobrega Paiva</td>
+                                        <td>12/08/2024</td>
+                                        <td>Felipe Matineli Alves</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Dionaldo Araujo Coelho</td>
+                                        <td>06/08/2024</td>
+                                        <td>Felipe Matineli Alves</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Maria Antonela Braga</td>
+                                        <td>25/07/2024</td>
+                                        <td>Germano Yoshikawa Da Silva</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>Monalisa Gáglio Ponte</td>
+                                        <td>06/07/2024</td>
+                                        <td>Denis Ferreira Prado</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">6</th>
+                                        <td>Eliane Willians Barreto</td>
+                                        <td>01/07/2024</td>
+                                        <td>Robison Pimentel Coelho</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">7</th>
+                                        <td>Josué Pereira Filho</td>
+                                        <td>19/06/2024</td>
+                                        <td>Janice Hosenberg Lino</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">8</th>
+                                        <td>Xerox De Arruda Mato</td>
+                                        <td>15/06/2024</td>
+                                        <td>Janice Hosenberg Lino</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">9</th>
+                                        <td>Viviane Torre Vaz</td>
+                                        <td>10/06/2024</td>
+                                        <td>Gesabel Sanchez Rosa</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">10</th>
+                                        <td>Carlos Fontinele de Melo</td>
+                                        <td>28/05/2024</td>
+                                        <td>Felipe Matineli Alves</td>
+                                        <td>
+                                            <a href="editar_bebe.html"><button type="button" class="btn btn-info"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger erase" onclick="deletarLinha(this)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </td>
+                                    </tr>
                                 </tbody>
                               </table>
                         </div>
